@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ammu 💗</title>
+<style>
+  :root { --pink:#ff6f9f; --deep:#a83268; --cream:#fff7f8; }
+  * { box-sizing:border-box }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden; color:#702c4a;
+    font-family: "Trebuchet MS", system-ui, sans-serif;
+    background: radial-gradient(circle at 15% 20%, #ffe0eb 0, transparent 32%),
+                radial-gradient(circle at 85% 75%, #ffd6e6 0, transparent 30%),
+                linear-gradient(135deg,#fff2f6,#ffe1eb 48%,#fff7f8);
+  }
+  .hearts { position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0 }
+  .heart { position:absolute; bottom:-50px; color:#ff8eb2; opacity:.35; animation: floatUp linear infinite; }
+  @keyframes floatUp { to { transform:translateY(-115vh) rotate(360deg); opacity:0 } }
+  .wrap { position:relative; z-index:1; min-height:100vh; display:grid; place-items:center; padding:24px }
+  .card {
+    width:min(680px,100%); padding:clamp(28px,6vw,54px); text-align:center;
+    background:rgba(255,255,255,.78); border:1px solid rgba(255,255,255,.9);
+    border-radius:30px; box-shadow:0 18px 60px rgba(177,63,105,.16);
+    backdrop-filter:blur(12px); animation: appear .7s ease both;
+  }
+  @keyframes appear { from { opacity:0; transform:translateY(16px) scale(.98) } to { opacity:1; transform:none } }
+  .eyebrow { color:#d65d8a; letter-spacing:3px; text-transform:uppercase; font-size:12px; font-weight:800 }
+  h1 { font-family:Georgia,serif; font-size:clamp(2.4rem,8vw,4.5rem); line-height:1.05; margin:16px 0; color:#a83268 }
+  h2 { font-family:Georgia,serif; font-size:clamp(1.7rem,5vw,2.5rem); color:#a83268; margin:14px 0 }
+  p { font-size:clamp(1rem,2.7vw,1.15rem); line-height:1.8; color:#78445a }
+  .big-heart { font-size:52px; display:block; margin:10px }
+  .btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:28px }
+  button {
+    border:0; border-radius:999px; padding:14px 27px; font-size:1rem; font-weight:800;
+    cursor:pointer; transition:transform .18s, box-shadow .18s;
+  }
+  button:hover { transform:translateY(-3px); box-shadow:0 9px 20px #d96b9638 }
+  .primary { color:white; background:linear-gradient(135deg,#ff78a4,#d94d82) }
+  .secondary { color:#a83268; background:#ffe3ed; border:1px solid #ffc1d5 }
+  .question-count { color:#d65d8a; font-size:.9rem; font-weight:800; letter-spacing:1px }
+  .progress { height:7px; background:#ffe4ed; border-radius:99px; margin:18px auto 28px; max-width:360px; overflow:hidden }
+  .bar { height:100%; background:linear-gradient(90deg,#ff9fbd,#d94d82); width:0%; transition:width .3s }
+  .question { min-height:85px; display:grid; place-items:center }
+  .modal { position:fixed; inset:0; display:none; place-items:center; padding:20px; background:#64223e70; z-index:5 }
+  .modal.show { display:grid }
+  .modal-box { width:min(440px,100%); background:#fff8fb; padding:34px 28px; text-align:center; border-radius:26px; box-shadow:0 20px 70px #53152f55; animation:appear .25s ease }
+  .modal-box .big-heart { font-size:44px }
+
+  .hug-scene { display:none; width:min(280px,100%); margin:4px auto 14px; overflow:visible; }
+  .hug-scene.show { display:block; }
+  .hug-scene svg { width:100%; height:auto; overflow:visible; }
+  .hug-left { transform-origin:112px 120px; animation:leanIn 1.15s ease-in-out infinite alternate; }
+  .hug-right { transform-origin:168px 120px; animation:leanInRight 1.15s ease-in-out infinite alternate; }
+  .hug-arms { transform-origin:140px 143px; animation:squeeze 1.15s ease-in-out infinite alternate; }
+  .hug-heart { transform-origin:140px 54px; animation:heartPop .8s ease-in-out infinite alternate; }
+  @keyframes leanIn { to { transform:translateX(10px) rotate(5deg) } }
+  @keyframes leanInRight { to { transform:translateX(-10px) rotate(-5deg) } }
+  @keyframes squeeze { to { transform:scale(1.07) translateY(-2px) } }
+  @keyframes heartPop { to { transform:scale(1.28) translateY(-5px) } }
+  @media (prefers-reduced-motion: reduce) {
+    .hug-left,.hug-right,.hug-arms,.hug-heart { animation:none; }
+  }
+
+  .signature { margin-top:28px; color:#d65d8a; font-family:Georgia,serif; font-style:italic; font-size:1.2rem }
+  .sparkle { color:#ee80a5 }
+  .hidden { display:none }
+
+  .gift-stage { padding:18px 0 8px; }
+  .gift-button { background:transparent; padding:8px; border:0; box-shadow:none!important; }
+  .gift { position:relative; width:150px; height:125px; margin:28px auto 12px; cursor:pointer; }
+  .gift-box { position:absolute; bottom:0; left:10px; width:130px; height:88px; border-radius:8px 8px 13px 13px;
+    background:linear-gradient(135deg,#ff8eb2,#d94d82); box-shadow:0 12px 24px #c64a7950; }
+  .gift-box:before { content:""; position:absolute; left:54px; top:0; width:22px; height:100%; background:#ffe6a8; }
+  .gift-lid { position:absolute; z-index:2; left:0; top:22px; width:150px; height:27px; border-radius:8px;
+    background:linear-gradient(135deg,#ffb2c9,#ed6797); transition:transform .8s ease, top .8s ease; }
+  .gift-lid:before { content:""; position:absolute; left:64px; top:0; width:22px; height:27px; background:#ffe6a8; }
+  .bow { position:absolute; z-index:3; top:0; left:55px; width:42px; height:30px; }
+  .bow:before,.bow:after { content:""; position:absolute; width:24px; height:19px; border:7px solid #ffe6a8; border-radius:50% 50% 8px 50%; }
+  .bow:before { left:-4px; transform:rotate(25deg) }
+  .bow:after { right:-4px; transform:scaleX(-1) rotate(25deg) }
+  .gift.open .gift-lid { top:-35px; transform:rotate(-22deg) translateX(-25px); }
+  .gift.open { animation:giftBounce .7s ease; }
+  @keyframes giftBounce { 0%,100%{transform:translateY(0)} 35%{transform:translateY(-18px)} 65%{transform:translateY(4px)} }
+  .gift-hint { color:#d65d8a; font-weight:700; }
+  .burst { position:fixed; inset:0; pointer-events:none; z-index:8; overflow:hidden; }
+  .burst span { position:absolute; top:45%; left:50%; font-size:25px; animation:burstOut 1.6s ease-out forwards; }
+  @keyframes burstOut { to { transform:translate(var(--x),var(--y)) rotate(540deg) scale(.4); opacity:0 } }
+  .birthday-reveal { animation:birthdayReveal 1.1s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes birthdayReveal { 0%{opacity:0;transform:translateY(35px) scale(.88)} 65%{opacity:1;transform:translateY(-7px) scale(1.03)} 100%{opacity:1;transform:none} }
+
+  @media(max-width:420px){ .card{padding:30px 20px} button{width:100%} .btns{gap:10px} }
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+<main class="wrap">
+  <section class="card" id="intro">
+    <div class="eyebrow">A little surprise, made with love</div>
+    <span class="big-heart">💗</span>
+    <h1>For my Ammu</h1>
+    <p style="font-family:Georgia,serif;font-size:clamp(1.35rem,4vw,1.8rem);color:#a83268">
+      You will be always my love in every life.
+    </p>
+    <p>Some feelings are too special for ordinary words. So, I made a little world of questions, smiles and love just for you.</p>
+    <div class="btns"><button class="primary" onclick="startQuestions()">Open your surprise 💌</button></div>
+    <div class="signature">Forever yours ♡</div>
+  </section>
+
+  <section class="card hidden" id="quiz">
+    <div class="eyebrow">A few questions for you, Ammu</div>
+    <div class="question-count" id="count">QUESTION 1 OF 5</div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <span class="big-heart">💕</span>
+    <div class="question"><h2 id="question"></h2></div>
+    <p id="hint">Choose honestly… my heart is listening! 😊</p>
+    <div class="btns">
+      <button class="primary" onclick="answer('yes')">Yes 💖</button>
+      <button class="secondary" onclick="answer('no')">No 🙈</button>
+    </div>
+  </section>
+
+
+  <section class="card hidden" id="giftPage">
+    <div class="eyebrow">One last surprise, birthday girl</div>
+    <span class="big-heart">🎀💗🎀</span>
+    <h2>A little gift for you, Ammu!</h2>
+    <p>You've answered all my questions… now there's one final surprise waiting for you.</p>
+    <div class="gift-stage">
+      <button class="gift-button" aria-label="Open your birthday gift" onclick="openGift()">
+        <div class="gift" id="gift">
+          <div class="gift-lid"></div><div class="bow"></div><div class="gift-box"></div>
+        </div>
+      </button>
+    </div>
+    <p class="gift-hint">Tap the gift box to open it! 🎁</p>
+  </section>
+
+  <section class="card hidden" id="final">
+    <div class="eyebrow">Today is all about you</div>
+    <span class="big-heart">🎂💗🎉</span>
+    <h1>Happy Birthday,<br>Ammu!</h1>
+    <p>May your life be filled with endless smiles, beautiful moments and all the happiness your heart can hold.</p>
+    <p>You are my favourite person, my sweetest thought and my love in every lifetime. No matter how many lives I get, I would still choose you. ❤️</p>
+    <p class="signature">I love you, Ammu. Today, tomorrow and in every life. ♡</p>
+    <div class="btns"><button class="primary" onclick="celebrate()">Send you a million hugs 🤗</button></div>
+  </section>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <span class="big-heart" id="modalHeart">💗</span>
+
+    <div class="hug-scene" id="hugScene" aria-label="Animated illustration of a couple hugging">
+      <svg viewBox="0 0 280 205" role="img" aria-hidden="true">
+        <defs>
+          <linearGradient id="hugBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffe3ed"/><stop offset="1" stop-color="#fff5f8"/>
+          </linearGradient>
+          <linearGradient id="pinkDress" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff9fbd"/><stop offset="1" stop-color="#dc5d91"/>
+          </linearGradient>
+          <linearGradient id="blueTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8c9ee8"/><stop offset="1" stop-color="#5969b5"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="140" cy="178" rx="91" ry="13" fill="#eeb7cb" opacity=".35"/>
+        <circle cx="140" cy="100" r="89" fill="url(#hugBg)"/>
+        <g fill="#f28bb0" opacity=".8">
+          <path d="M48 60c-9-12 9-21 16-8 7-13 25-4 16 8l-16 17z"/>
+          <path d="M207 47c-7-10 8-18 14-7 6-11 21-3 14 7l-14 14z"/>
+          <circle cx="57" cy="130" r="3"/><circle cx="224" cy="122" r="3"/>
+        </g>
+        <g class="hug-left">
+          <path d="M83 174c2-37 9-63 29-68h23c17 9 22 34 24 68z" fill="url(#pinkDress)"/>
+          <circle cx="123" cy="75" r="25" fill="#9b593f"/>
+          <path d="M98 76c-4-25 13-38 31-31 14 5 20 18 16 33-6-9-13-15-25-16-7 8-13 12-22 14z" fill="#4a2b32"/>
+          <path d="M110 79q5 5 10 0" fill="none" stroke="#663c45" stroke-width="2" stroke-linecap="round"/>
+          <path d="M132 79q5 5 10 0" fill="none" stroke="#663c45" stroke-width="2" stroke-linecap="round"/>
+          <path d="M119 91q7 7 14 0" fill="none" stroke="#b85b71" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <g class="hug-right">
+          <path d="M121 174c2-36 8-62 26-68h24c19 9 26 35 28 68z" fill="url(#blueTop)"/>
+          <circle cx="163" cy="75" r="25" fill="#d69a70"/>
+          <path d="M138 72c1-24 19-34 36-25 11 6 16 17 13 29-9-6-17-10-27-10-6 5-13 7-22 6z" fill="#342b35"/>
+          <path d="M151 79q5 5 10 0" fill="none" stroke="#684b48" stroke-width="2" stroke-linecap="round"/>
+          <path d="M168 79q5 5 10 0" fill="none" stroke="#684b48" stroke-width="2" stroke-linecap="round"/>
+          <path d="M158 91q7 7 14 0" fill="none" stroke="#a95665" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <g class="hug-arms" fill="none" stroke-linecap="round" stroke-width="13">
+          <path d="M99 119c17 30 53 39 91 10" stroke="#f0b28e"/>
+          <path d="M183 117c-18 31-54 40-91 12" stroke="#9b593f"/>
+        </g>
+        <g class="hug-heart">
+          <path d="M140 45c-13-17-35 1 0 29 35-28 13-46 0-29z" fill="#f45e91"/>
+          <path d="M135 49l5 5 8-10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+
+    <h2 id="modalTitle">Aww!</h2>
+    <p id="modalMessage"></p>
+    <button class="primary" id="modalContinue" onclick="closeModal()">Continue 💞</button>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    q: "Do I make your days a little more special?",
+    yes: "Aha! Correct answer, Ammu! 😌💕 Your smile is officially my favourite notification. Please keep sending it daily!",
+    no: "Ouch! My heart just got a tiny rejection letter. 😂 I'll appeal with extra hugs and unlimited silly jokes! 💗"
+  },
+  {
+    q: "Will you keep sharing your smiles and silly moments with me?",
+    yes: "Pakka deal! 🤝 But warning: my silly jokes come with no mute button. You are stuck with them! 😂💕",
+    no: "That's okay! I'll happily do enough talking for both of us. 😂 Just save me one smile, okay? 🌷"
+  },
+  {
+    q: "When you meet me, will you give me a party or not? 😄",
+    yes: "YESSS! 🎉 I'll bring my biggest appetite. Please don't make me wait until next birthday… I'm not that patient! 😂❤️",
+    no: "No party?! 😭 Fine… I'll accept payment in one tight hug, two kisses and unlimited smiles. No refunds! 😂😘"
+  },
+  {
+    q: "Can I keep choosing you in every lifetime?",
+    yes: "Awww! 🥹❤️ Even Google Maps couldn't find a better destination for my heart. It keeps rerouting to you!",
+    no: "Oho, tough customer! 😂 I'll submit my application again in the next lifetime. Until then, your happiness is my priority. 💞"
+  },
+  {
+    q: "Will you let me make today extra special for you?",
+    yes: "That's my girl! ✨ Birthday princess treatment activated. Your only job today is to look cute and eat cake! 🎂😂",
+    no: "Madam has rejected the special treatment! 😂 No worries, the birthday wishes, cake and love are still non-refundable. 🌸💗"
+  }
+];
+let current = 0;
+function startQuestions() {
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  showQuestion();
+}
+function showQuestion() {
+  document.getElementById('count').textContent = `QUESTION ${current+1} OF ${questions.length}`;
+  document.getElementById('bar').style.width = `${(current/questions.length)*100}%`;
+  document.getElementById('question').textContent = questions[current].q;
+}
+function answer(choice) {
+  document.getElementById('modalContinue').style.display = 'inline-block';
+  document.getElementById('hugScene').classList.remove('show');
+  const item = questions[current];
+  document.getElementById('modalHeart').textContent = choice === 'yes' ? '💖' : '🥰';
+  document.getElementById('modalTitle').textContent = choice === 'yes' ? 'You made me smile!' : 'A little note for you…';
+  document.getElementById('modalMessage').textContent = item[choice];
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('show');
+  document.getElementById('hugScene').classList.remove('show');
+  current++;
+  if (current < questions.length) showQuestion();
+  else {
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('giftPage').classList.remove('hidden');
+    document.getElementById('bar').style.width = '100%';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+function openGift() {
+  const gift = document.getElementById('gift');
+  if (gift.classList.contains('open')) return;
+  gift.classList.add('open');
+  const burst = document.createElement('div');
+  burst.className = 'burst';
+  const symbols = ['💖','✨','💕','🎉','🌸','💗','⭐','🥰'];
+  for (let i = 0; i < 28; i++) {
+    const bit = document.createElement('span');
+    bit.textContent = symbols[i % symbols.length];
+    bit.style.setProperty('--x', `${(Math.random() - .5) * 100}vw`);
+    bit.style.setProperty('--y', `${(Math.random() - .5) * 100}vh`);
+    burst.appendChild(bit);
+  }
+  document.body.appendChild(burst);
+  setTimeout(() => {
+    burst.remove();
+    document.getElementById('giftPage').classList.add('hidden');
+    const finalPage = document.getElementById('final');
+    finalPage.classList.remove('hidden');
+    finalPage.classList.add('birthday-reveal');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }, 1100);
+}
+function celebrate() {
+  document.getElementById('modalContinue').style.display = 'none';
+  document.getElementById('hugScene').classList.add('show');
+  const messages = ["A million hugs for you, Ammu! 🤗💗","Keep shining, birthday girl! ✨","You are loved more than words can say. ❤️"];
+  document.getElementById('modalHeart').textContent = '🎉💞';
+  document.getElementById('modalTitle').textContent = 'Big birthday hugs!';
+  document.getElementById('modalMessage').textContent = messages[Math.floor(Math.random()*messages.length)];
+  document.getElementById('modal').classList.add('show');
+}
+const hearts = document.getElementById('hearts');
+for (let i=0;i<22;i++) {
+  const el=document.createElement('span'); el.className='heart'; el.textContent=['♥','♡','💕'][i%3];
+  el.style.left=(Math.random()*100)+'%'; el.style.fontSize=(14+Math.random()*25)+'px';
+  el.style.animationDuration=(9+Math.random()*12)+'s'; el.style.animationDelay=(-Math.random()*18)+'s';
+  hearts.appendChild(el);
+}
+</script>
+</body>
+</html>
